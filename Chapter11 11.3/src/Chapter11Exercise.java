@@ -3,9 +3,9 @@ import java.util.Date;
 public class Chapter11Exercise {
 
 	public static void main(String[] args) {
-		Account account = new Account(111, 200);
-        CheckingAccount checkingAccount = new CheckingAccount(112, 250);
-        SavingsAccount savingsAccount = new SavingsAccount(113, 300);
+		Account account = new Account(197, 600);
+        CheckingAccount checkingAccount = new CheckingAccount(150, 850);
+        SavingsAccount savingsAccount = new SavingsAccount(100, 700);
 
         System.out.println(account);
         System.out.println(checkingAccount);
