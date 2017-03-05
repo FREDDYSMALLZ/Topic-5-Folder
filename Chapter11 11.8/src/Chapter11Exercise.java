@@ -1,10 +1,12 @@
-
+import java.util.Date;
+import java.util.ArrayList;
 public class Chapter11Exercise {
-
+//Test program
+	// The account class is designed from chapter 9 exercise 9.7
 	public static void main(String[] args) {
-		Account1.setAnnualInterestRate(5.5);
+		Account.setAnnualInterestRate(1.5);
 
-	    Account1 account = new Account1("George", 1122, 1000);
+	    Account account = new Account("George", 1122, 1000);
 	    account.deposit(30);
 	    account.deposit(40);
 	    account.deposit(50);
@@ -14,12 +16,12 @@ public class Chapter11Exercise {
 	    account.withdraw(2);
 	    
 	    System.out.println("Name: " + account.getName());
-	    System.out.println("Annual interest rate: " + Account1.getAnnualInterestRate());
+	    System.out.println("Annual interest rate: " + Account.getAnnualInterestRate());
 	    System.out.println("Balance: " + account.getBalance());
 	    
 	    java.util.ArrayList list = account.getTransactions();
 	    
-	    System.out.printf("%-35s%-15s%-15s%-15s\n", "Date", "Type", "Amount", "Balance");
+	    System.out.printf ("%-35s%-15s%-15s%-15s\n"," Date ", " Type ", " Amount ", " Balance " );
 	    
 	    for (int i = 0; i < list.size(); i++) {
 	      Transaction transaction = (Transaction)(list.get(i));
@@ -29,19 +31,19 @@ public class Chapter11Exercise {
 	  }
 	}
 
-	class Account1 {
+	class Account {
 	  private int id;
 	  private String name;
 	  private double balance;
 	  private static double annualInterestRate;
 	  private java.util.Date dateCreated;
-	  private java.util.ArrayList transactions = new java.util.ArrayList();
+	  private java.util.ArrayList<Transaction> transactions = new java.util.ArrayList();
 
-	  public Account1() {
+	  public Account() {
 	    dateCreated = new java.util.Date();
 	  }
 
-	  public Account1(String name, int id, double balance) {
+	  public Account(String name, int id, double balance) {
 	    this.id = id;
 	    this.name = name;
 	    this.balance = balance;
@@ -77,11 +79,11 @@ public class Chapter11Exercise {
 	  }
 
 	  public static void setAnnualInterestRate(double annualInterestRate) {
-	    Account1.annualInterestRate = annualInterestRate;
+	    Account.annualInterestRate = annualInterestRate;
 	  }
 
 	  public double getMonthlyInterest() {
-	    return balance * (annualInterestRate / 1200);
+	    return balance * (annualInterestRate / 1200); //(annualInterestRate/12)/100= monthlyInterest
 	  }
 
 	  public java.util.Date getDateCreated() {
@@ -90,16 +92,16 @@ public class Chapter11Exercise {
 
 	  public void withdraw(double amount) {
 	    balance -= amount;
-	    transactions.add(new Transaction('W', amount, balance, ""));
+	    transactions.add(new Transaction('w', amount, balance, ""));//let w represent withdraw
 	  }
 
 	  public void deposit(double amount) {
 	    balance += amount;
-	    transactions.add(new Transaction('D', amount, balance, ""));
+	    transactions.add(new Transaction('d', amount, balance, ""));//let d represent deposit
 	  }
 	}
 
-	class Transaction {
+	class Transaction {//Class account that the array will hold the transactions made
 	  private java.util.Date date;
 	  private char type;
 	  private double amount;
