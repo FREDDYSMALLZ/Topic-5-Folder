@@ -3,7 +3,7 @@ import java.util.Date;
 public class Chapter11Exercise {
 
 	public static void main(String[] args) {
-		Account account = new Account(197, 600);
+		Account account = new Account("George", 197, 600);
         CheckingAccount checkingAccount = new CheckingAccount(150, 850);
         SavingsAccount savingsAccount = new SavingsAccount(100, 700);
 
@@ -24,56 +24,56 @@ class Account {
     
     
     public Account() {
-        dateCreated = new Date();
+        dateCreated = new java.util.Date();
     }
 
     public void withdraw(double amount) {
-	
-		
+    	balance -= amount;
+
 	}
 
-	public Account(int id, double balance) {
-        this();
-        Id = id;
-        balance = balance;
-    }
+	
 
     public Account(String name, int id, double balance) {
-        this(id, balance);
-        name = name;
+        this.Id = id;
+        this.name = name;
+        this.balance = balance;
 
     }
 
     public int getId() {
-        return Id;
+        return this.Id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     public double getBalance() {
-        return balance;
+        return this.balance;
+    }
+    public String getName(){
+    	return this.name;
     }
 
     public void setBalance(double balance) {
-        balance = balance;
+        this.balance = balance;
     }
 
-    public double getAnnualInterestRate() {
+    public  double getAnnualInterestRate() {
         return annualInterestRate;
     }
 
     public void setAnnualInterestRate(double annualInterestRate) {
-        annualInterestRate = annualInterestRate;
+        this.annualInterestRate = annualInterestRate;
     }
 
-    public Date getDateCreated() {
+    public java.util.Date getDateCreated() {
         return dateCreated;
     }
 
     public double getMonthlyInterestRate() {
-        return balance * (annualInterestRate / 12) / 100;
+        return balance * (annualInterestRate / 1200); 
     }
 
 
@@ -91,7 +91,7 @@ class CheckingAccount extends Account {
     protected double Overdrft_Limit = -37;
 
     public CheckingAccount(int id, double balance) {
-        super(id, balance);
+        super();
     }
 
     @Override
@@ -103,7 +103,7 @@ class CheckingAccount extends Account {
 
     @Override
     public String toString() {
-        return "CheckingAccount{" + "balance=" + balance + '}';
+        return "CheckingAccount{" + " balance = " + balance + '}';
     }
 }
 class SavingsAccount extends Account {
@@ -111,7 +111,7 @@ class SavingsAccount extends Account {
     protected double Overdraft_Limit = 0;
 
     public SavingsAccount(int id, double balance) {
-        super(id, balance);
+        super();
     }
 
     @Override
@@ -123,8 +123,6 @@ class SavingsAccount extends Account {
 
     @Override
     public String toString() {
-        return "SavingsAccount{" +
-                "balance=" + balance +
-                '}';
+        return "SavingsAccount{" + "balance=" + balance + '}';
     }
 }
