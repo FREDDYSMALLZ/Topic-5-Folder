@@ -28,7 +28,7 @@ public class Chapter11Exercise {
 		        return courseName;
 		    }
 
-		    public void dropStudent(String student) {
+		    public void removeStudent(String student) {
 
 		        students.remove(student);
 
